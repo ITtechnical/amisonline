@@ -1,0 +1,80 @@
+{% extends "helpdesk/base_site.html" %}
+{% load static %}
+
+
+        <!-- /top navigation -->
+  {% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="clearfix"></div>
+
+    </div>
+
+    <div class="col-md-12 col-sm-12 ">
+      <div class="row mt-2" style="background: #f7f7f7;;">
+        {% include 'helpdesk/status.html' %}
+      </div>
+                    <div class="x_panel">
+                      <div class="x_title">
+
+
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content float-left">
+
+                      </div>
+                      <div class="x_content">
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="table-responsive">
+
+                        <table id="datatable" class="table " style="width:100%">
+                          <thead>
+                            <tr class="headings">
+                              <th class="column-title">TICKET NO.</th>
+                              <th class="column-title">SUBJECT</th>
+                              <th class="column-title">STATUS</th>
+                              <th class="column-title">DATE </th>
+                              <th class="column-title">ACTIONS</th>
+
+                            </tr>
+                          </thead>
+
+
+                          <tbody>
+                            {% for tickets in total %}
+                                <tr >
+                                   <td class="">{{ tickets.id}}</td>
+                                   <td class="">{{ tickets.subject }}</td>
+                                   <td class="">
+                                      {% if tickets.status.id == 2 %}
+                                          <span class="badge bg-danger">{{tickets.status}}</span>
+                                      {% else %}
+                                          <span class="badge bg-primary">{{tickets.status}}</span>
+                                      {% endif %}
+                                  </td>
+                                  <td class="">{{ tickets.ticket_date }}</td>
+                                  <td class="">
+
+                                     <a href="{% url 'helpdesk:edittickethelp' tickets.id %}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                     <a href="{% url 'helpdesk:detail' tickets.id %}" class="btn btn-sm btn-outline-danger">View</a>
+
+
+
+
+                                </tr>
+                            {% endfor %}
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                    </div>
+                  </div>
+  </div>
+
+  {% endblock content %}

@@ -1,0 +1,73 @@
+{% load static %}
+<div class="left_col scroll-view">
+
+  <!-- menu profile quick info -->
+  <div class="navbar nav_title">
+  {% for group in user.groups.all  %}
+    {% if group.id == 1 %}
+      <a href="{% url 'helpdesk:userdashboard' %}" class="site_title">
+        <img style="width:40px" src="{% static 'build/images/logo.png' %}" alt="">
+        <img style="width:150px" src="{% static 'build/images/sd2x.png' %}" alt="">
+      </a>
+    {% elif group.id == 2 %}
+    <a href="{% url 'helpdesk:agentdashboard' %}" class="site_title">
+      <img style="width:40px" src="{% static 'build/images/logo.png' %}" alt="">
+      <img style="width:150px" src="{% static 'build/images/sd2x.png' %}" alt="">
+    </a>
+    {% elif group.id == 3 %}
+      <a href="{% url 'helpdesk:helpdeskdashboard' %}" class="site_title">
+        <img style="width:40px" src="{% static 'build/images/logo.png' %}" alt="">
+        <img style="width:150px" src="{% static 'build/images/sd2x.png' %}" alt="">
+      </a>
+    {% else %}
+    <a href="#" class="site_title">
+      <img style="width:40px" src="{% static 'build/images/logo.png' %}" alt="">
+      <img style="width:150px" src="{% static 'build/images/sd2x.png' %}" alt="">
+    </a>
+    {% endif %}
+  {% endfor %}
+
+  </div>
+
+  <div class="clearfix"></div>
+
+
+  <br />
+
+  <!-- sidebar menu -->
+  <!-- remove the id to remove the drop down, but you have work on the active -->
+  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+      <ul class="nav side-menu">
+        {% for group in user.groups.all  %}
+          {% if group.id == 1 %}
+        <li><a href="{% url 'helpdesk:userticket' %}"><i class="fa fa-edit"></i>New Ticket<span class="fa fa-chevron-down"></span></a>
+        </li>
+        <hr style="background-color: white;">
+        <li><a><i class="fa fa-bar-chart-o "></i> FAQ </a>
+          <!-- <ul class="nav child_menu">
+            <li><a href="chartjs.html">Chart JS</a></li>
+          </ul> -->
+        </li>
+        {% elif group.id == 2 %}
+        <li><a href="{% url 'helpdesk:ticketescalated' %}"><i class="fa fa-edit"></i>Escalated Tickets<span class="fa fa-chevron-down"></span></a>
+        </li>
+        {% elif group.id == 3 %}
+        <li><a href="{% url 'helpdesk:ticket' %}"><i class="fa fa-edit"></i>New Ticket<span class="fa fa-chevron-down"></span></a>
+        </li>
+        <li><a href="{% url 'helpdesk:dirsearch' %}"><i class="fa fa-edit"></i>Search<span class="fa fa-chevron-down"></span></a>
+        </li>
+        {% else %}
+
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- /sidebar menu -->
+
+  <!-- /menu footer buttons -->
+
+  <!-- /menu footer buttons -->
+</div>
