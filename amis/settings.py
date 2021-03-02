@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'amis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'AUDITSERVICE',
-        'USER':'HELPDESK',
-        'PASSWORD':'lovia2020',
-        'HOST':'localhost',
+        'NAME': '############',
+        'USER':'##########',
+        'PASSWORD':'#########',
+        'HOST':'########',
 
 
     }
